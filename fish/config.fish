@@ -19,12 +19,9 @@ function fish_prompt
 end
 
 alias ls='ls -a --color=auto'
-alias deepseek='ollama run deepseek-r1'
 alias delete='sudo nala remove "$@" && sudo nala autoremove && clear && echo "package removed"'
 alias grep='grep --color=auto'
-alias fetch='/home/user/Documents/tf-main/./tf.py'
 alias c='clear'
-alias os='/home/user/banan-os/./bos qemu'
 alias install='sudo nala install -y'
 alias off='poweroff'
 alias update='sudo nala update && sudo nala upgrade'

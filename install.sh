@@ -164,19 +164,30 @@ else
   echo ".xinitrc not found, skipping."
 fi
 
-# Copy backgrounds folder to the home directory
-if [ -d backgrounds ]; then
-  echo "Copying backgrounds folder to home directory..."
-  cp -r backgrounds ~/
+
+# Copy config folder to the .config home directory
+if [ -d config ]; then
+  echo "Copying config folder to ~/.config..."
+  mkdir -p ~/.config
+  cp -r fish/* ~/.config/
 else
-  echo "backgrounds folder not found, skipping."
+  echo "config folder not found, skipping."
 fi
 
 # Copy config folder to the .config home directory
 if [ -d config ]; then
   echo "Copying config folder to ~/.config..."
   mkdir -p ~/.config
-  cp -r config/* ~/.config/
+  cp -r rofi/* ~/.config/
+else
+  echo "config folder not found, skipping."
+fi
+
+# Copy config folder to the .config home directory
+if [ -d config ]; then
+  echo "Copying config folder to ~/.config..."
+  mkdir -p ~/.config
+  cp -r picom/* ~/.config/
 else
   echo "config folder not found, skipping."
 fi

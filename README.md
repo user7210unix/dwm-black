@@ -74,3 +74,12 @@ curl -fsSL https://raw.githubusercontent.com/user7210unix/dwm-black/main/install
     <li><strong>Super+shift+p</strong> – Quit Dwm Session</li>
   </ul>
 </div>
+
+sudo bash -c 'cat <<EOL > /usr/share/xsessions/dwm.desktop
+[Desktop Entry]
+Name=DWM
+Comment=Start DWM with custom commands
+Exec=/home/user/startdwm.sh
+Type=Application
+EOL
+chmod 644 /usr/share/xsessions/dwm.desktop'

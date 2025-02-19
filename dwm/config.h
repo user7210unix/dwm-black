@@ -1,15 +1,18 @@
+#include <X11/XF86keysym.h>
+
+
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 44;        /* gaps between windows */
 static const unsigned int snap      = 3;       /* snap pixel */
 static const int user_bh            = 14;        /* 2 is the default spacing around the bar's font */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 20;       /* vertical padding of bar */
-static const int sidepad            = 206;       /* horizontal padding of bar */
-static const char *fonts[] = {"JetBrainsMonoNerdFont-Bold:size=18"};
+static const int topbar             = 0;        /* 0 means bottom bar */
+static const int vertpad            = 36;       /* vertical padding of bar */
+static const int sidepad            = 406;       /* horizontal padding of bar */
+static const char *fonts[] = {"Naturaly:size=30", "JetBrainsMonoNerdFont-Bold:size=24"};
 static const char dmenufont[] = "JetBrainsMonoNerdFont-Bold:size=18";
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#000000";
@@ -24,7 +27,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰃚 ","󰃚 ","󰃚 ","󰃚 " };
+static const char *tags[] = { "󰃚 ","󰃚 ","󰃚 " };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -73,6 +76,13 @@ static const char *i3lockfancy[] = { "i3lockfancy", NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL }; 
 
 
+/* Add brightness and volume control */
+static const char *brupcmd[] = { "brightnessctl", "set", "+5%", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
+static const char *volupcmd[] = { "pamixer", "-i", "5", NULL };
+static const char *voldowncmd[] = { "pamixer", "-d", "5", NULL };
+static const char *volmutecmd[] = { "pamixer", "-t", NULL };
+
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -82,6 +92,12 @@ static const Key keys[] = {
         { MODKEY,                       XK_e,      spawn,          {.v = pcmanfm } },
         { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = i3lockfancy } },
 
+	
+	{ 0, XF86XK_MonBrightnessUp,   spawn, {.v = brupcmd } },
+    	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd } },
+    	{ 0, XF86XK_AudioRaiseVolume,  spawn, {.v = volupcmd } },
+    	{ 0, XF86XK_AudioLowerVolume,  spawn, {.v = voldowncmd } },
+    	{ 0, XF86XK_AudioMute,         spawn, {.v = volmutecmd } },
 
  	{ MODKEY, 			XK_d, 		spawn, 		{.v = roficmd } }, 
 

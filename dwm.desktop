@@ -1,0 +1,10 @@
+#/usr/share/xsessions/dwm.desktop
+
+[Desktop Entry]
+Name=DWM
+Comment=Start DWM with custom commands
+Exec=/home/user/startdwm.sh
+Type=Application
+
+
+#chmod 644 /usr/share/xsessions/dwm.desktop'
